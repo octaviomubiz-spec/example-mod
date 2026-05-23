@@ -6,14 +6,14 @@ using namespace geode::prelude;
 class $modify(MyEditorUI, EditorUI) {
     bool init(LevelEditorLayer* editor) {
         if (!EditorUI::init(editor)) return false;
-        
-        // 1. Detect if Tinker or BetterEdit are active on the phone
-        bool hasTinker = Loader::get()->isModLoaded("alphalaneous.tinker");
-        bool hasBetterEdit = Loader::get()->isModLoaded("hjfod.betteredit");
-        
-        // 2. Log it to the console so we know it's working
-        log::info("Creator Pilot Loaded! Tinker: {}, BetterEdit: {}", hasTinker, hasBetterEdit);
-        
+
+        // Create a test popup when the editor opens
+        FLAlertLayer::create(
+            "Assistant Test",      // Title at the top
+            "Test UI Works!",      // Message in the middle
+            "Awesome"              // Button text
+        )->show();
+
         return true;
     }
 };
